@@ -1,0 +1,221 @@
+test:
+  name: banking-benchmark
+  description: benchmark of the bank contracts
+  workers:
+    type: local
+    number: 3
+  rounds:
+    # - label: create account.
+    #   description: create bunch of random accounts
+    #   txDuration: 30
+    #   rateControl:
+    #       type: maximum-rate
+    #       opts:
+    #           tps: 400
+    #           step: 5
+    #   workload:
+    #     module: workload/createAccount.js
+    #     arguments:
+    #       assets: 1
+    #       contractId: banka
+    #       channel: bankachannel
+    #       prefix: B  
+    - label: (BankA %100 single shard) Query a account.
+      description: Read account benchmark from BankA (%100 from BankA accounts)
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 400
+          #     step: 5
+      workload:
+        module: workload/queryBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          otherPrefix: B  
+          selfShard: 100
+    - label: (cross shard 25% - BankA asks BankB) Query a account.
+      description: Read account benchmark from BankA which asks BankA (%25 from BankA accounts)
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+      workload:
+        module: workload/queryBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          otherPrefix: B
+          selfShard: 25
+    - label: (cross shard 50% - BankA asks BankB) Query a account.
+      description: Read account benchmark from BankA which asks BankA (%50 from BankA accounts)
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+      workload:
+        module: workload/queryBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          otherPrefix: B
+          selfShard: 50
+    # # #############################################################
+    # # #############################################################
+    - label: (Cross Transfer %100 single shard) Transfer money
+      description: Transfer money from between accounts of %100 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferCrossShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 100
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    - label: (Cross Transfer %25 single shard) Transfer money
+      description: Transfer money from between accounts of %25 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferCrossShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 25
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    - label: (Cross Transfer %50 single shard) Transfer money
+      description: Transfer money from between accounts of %50 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferCrossShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 50
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    ####################################################################
+    ####################################################################
+    - label: ( Transfer %100 single shard) Transfer money
+      description: Transfer money from between accounts of %100 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 100
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    - label: ( Transfer %25 single shard) Transfer money
+      description: Transfer money from between accounts of %25 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 25
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    - label: ( Transfer %50 single shard) Transfer money
+      description: Transfer money from between accounts of %50 single shard
+      txDuration: 30
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+            startingTps: 300
+          # type: maximum-rate
+          # opts:
+          #     tps: 100
+          #     step: 5
+      workload:
+        module: workload/transferShardBalance.js
+        arguments:
+          assets: 400
+          contractId: banka
+          channel: bankachannel
+          prefix: A
+          selfShard: 50
+          otherContractId: bankb
+          otherChannel: bankbchannel
+          otherPrefix: B
+    
+    

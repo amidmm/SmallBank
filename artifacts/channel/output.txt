@@ -1,0 +1,29 @@
+rm: cannot remove 'genesis.block': No such file or directory
+rm: cannot remove 'mychannel.tx': No such file or directory
+bankachannel
+2021-04-19 14:32:21.766 +0430 [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2021-04-19 14:32:21.782 +0430 [common.tools.configtxgen.localconfig] completeInitialization -> INFO 002 orderer type: etcdraft
+2021-04-19 14:32:21.809 +0430 [common.tools.configtxgen.localconfig] completeInitialization -> INFO 003 Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+2021-04-19 14:32:21.809 +0430 [common.tools.configtxgen.localconfig] Load -> INFO 004 Loaded configuration: configtx.yaml
+2021-04-19 14:32:21.834 +0430 [common.tools.configtxgen] doOutputBlock -> INFO 005 Generating genesis block
+2021-04-19 14:32:21.834 +0430 [common.tools.configtxgen] doOutputBlock -> INFO 006 Creating system channel genesis block
+2021-04-19 14:32:21.835 +0430 [common.tools.configtxgen] doOutputBlock -> INFO 007 Writing genesis block
+2021-04-19 14:32:21.870 +0430 [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2021-04-19 14:32:21.884 +0430 [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: configtx.yaml
+2021-04-19 14:32:21.885 +0430 [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 003 Generating new channel configtx
+2021-04-19 14:32:21.890 +0430 [common.tools.configtxgen] doOutputChannelCreateTx -> INFO 004 Writing new channel tx
+#######    Generating anchor peer update for Org1MSP  ##########
+2021-04-19 14:32:21.932 +0430 [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2021-04-19 14:32:21.951 +0430 [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: configtx.yaml
+2021-04-19 14:32:21.951 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 003 Generating anchor peer update
+2021-04-19 14:32:21.955 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 004 Writing anchor peer update
+#######    Generating anchor peer update for Org2MSP  ##########
+2021-04-19 14:32:21.992 +0430 [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2021-04-19 14:32:22.011 +0430 [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: configtx.yaml
+2021-04-19 14:32:22.011 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 003 Generating anchor peer update
+2021-04-19 14:32:22.024 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 004 Writing anchor peer update
+#######    Generating anchor peer update for Org3MSP  ##########
+2021-04-19 14:32:22.078 +0430 [common.tools.configtxgen] main -> INFO 001 Loading configuration
+2021-04-19 14:32:22.093 +0430 [common.tools.configtxgen.localconfig] Load -> INFO 002 Loaded configuration: configtx.yaml
+2021-04-19 14:32:22.093 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 003 Generating anchor peer update
+2021-04-19 14:32:22.096 +0430 [common.tools.configtxgen] doOutputAnchorPeersUpdate -> INFO 004 Writing anchor peer update

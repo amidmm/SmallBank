@@ -1,0 +1,5 @@
+server/node_modules/
+bank*
+log.txt
+artifacts/src/github.com/Bank/go/vendor/
+caliper-workspace/node_modules
